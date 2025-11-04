@@ -14,12 +14,28 @@ function AppInicio() {
         <p className="text-gray-600">Aquí está el resumen de tu campaña</p>
       </div>
 
-      <div className="bg-gradient-to-br from-[#0A0F3C] to-[#5936FF] rounded-2xl p-8 text-white flex items-center justify-center" style={{ minHeight: '200px' }}>
-        <img 
-          src="/src/img/logoUNIO.png" 
-          alt="Logo ÜNIO" 
-          className="w-72 h-auto object-contain rounded-lg shadow-[0_0_20px_#B8FF6C] bg-transparent"
-        />
+      <div className="bg-gradient-to-br from-[#0A0F3C] to-[#5936FF] rounded-2xl p-6 text-white">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="font-semibold">Progreso de Campaña</h3>
+          <div className="w-3 h-3 bg-[#B8FF6C] rounded-full animate-pulse"></div>
+        </div>
+
+        <div className="flex items-center justify-center relative">
+          <div className="relative w-48 h-48 rounded-full bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] flex items-center justify-center">
+            <div className="absolute w-full h-full rounded-full bg-[#0A0F3C] m-2"></div>
+            <div className="text-center z-10">
+              <div className="text-3xl font-bold">78%</div>
+              <div className="text-sm text-gray-300 mt-1">Completado</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-sm">
+            <div className="w-2 h-2 bg-[#B8FF6C] rounded-full"></div>
+            <span>Objetivo actual: Aumentar alcance en redes</span>
+          </div>
+        </div>
       </div>
 
       <div>
