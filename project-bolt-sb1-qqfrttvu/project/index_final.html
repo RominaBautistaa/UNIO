@@ -82,39 +82,6 @@
         color: #6b7280;
       }
       
-      /* Star Rating Styles */
-      .star-btn {
-        cursor: pointer;
-        transition: transform 0.2s ease;
-        background: none;
-        border: none;
-        padding: 0;
-      }
-      
-      .star-btn:hover {
-        transform: scale(1.1);
-      }
-      
-      #ratingStars .star-btn.hovered i,
-      #ratingStars .star-btn.hovered i * {
-        color: #fbbf24 !important; /* amber-400 */
-        fill: #fbbf24 !important;
-      }
-      
-      #ratingStars .star-btn.active i,
-      #ratingStars .star-btn.active i * {
-        color: #fbbf24 !important; /* amber-400 */
-        fill: #fbbf24 !important;
-      }
-      
-      /* Make sure default inactive stars are gray */
-      #ratingStars .star-btn i,
-      #ratingStars .star-btn i * {
-        color: #9ca3af; /* gray-400 */
-        fill: #9ca3af;
-        transition: all 0.2s ease;
-      }
-      
       @media (max-width: 768px) {
         .desktop-nav {
           display: none;
@@ -213,27 +180,6 @@
         </div>
       </div>
     </div>
-    
-    <!-- Alert Modal -->
-    <div id="alertModal" class="modal-overlay">
-      <div class="modal-container">
-        <button id="closeAlertModal" class="modal-close-button">
-          <i data-lucide="x" class="w-6 h-6"></i>
-        </button>
-        <div class="p-8 text-center">
-          <div class="flex justify-center mb-6">
-            <div id="alertIcon" class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#B8FF6C] rounded-full flex items-center justify-center">
-              <i data-lucide="info" class="w-8 h-8 text-white"></i>
-            </div>
-          </div>
-          <h3 id="alertTitle" class="text-2xl font-bold text-[#0A0F3C] mb-4">Alerta</h3>
-          <p id="alertMessage" class="text-gray-600 mb-8">Mensaje de alerta</p>
-          <button id="alertOkButton" class="px-8 py-3 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-            Aceptar
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
@@ -258,9 +204,9 @@
             <button id="loginButtonNav" class="px-4 py-2 text-[#5936FF] font-semibold hover:bg-[#5936FF]/10 rounded-lg transition-colors">
               Iniciar sesión
             </button>
-            <button id="logoutButtonNav" class="px-4 py-2 text-white bg-[#5936FF] font-semibold hover:bg-[#7c5aff] rounded-lg transition-colors hidden">
-              Cerrar sesión
-            </button>
+            <a href="dashboard.html" id="dashboardLink" class="px-4 py-2 text-white bg-[#5936FF] font-semibold hover:bg-[#7c5aff] rounded-lg transition-colors hidden">
+              Dashboard
+            </a>
           </div>
         </div>
       </div>
@@ -329,14 +275,31 @@
 
           <div class="relative hidden lg:block">
             <div class="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl">
-              <div class="flex items-center justify-center h-full">
-                <div class="text-center">
-                  <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#B8FF6C] to-[#7eff00] mb-4">
-                    <i data-lucide="sparkles" class="w-8 h-8 text-[#0A0F3C]"></i>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between pb-4 border-b border-white/20">
+                  <h3 class="text-white font-semibold">Dashboard ÜNIO</h3>
+                  <div class="w-2 h-2 bg-[#B8FF6C] rounded-full animate-pulse"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-white/10 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Alcance</p>
+                    <p class="text-2xl font-bold text-white">+245%</p>
                   </div>
-                  <h3 class="text-xl font-bold text-white">Ü<span class="text-[#B8FF6C]">NIO</span></h3>
-                  <p class="text-gray-300 text-sm mt-2">Inteligencia Artificial</p>
-                  <p class="text-gray-300 text-sm">para tu crecimiento</p>
+                  <div class="bg-white/10 rounded-lg p-4">
+                    <p class="text-gray-400 text-sm">Engagement</p>
+                    <p class="text-2xl font-bold text-white">+189%</p>
+                  </div>
+                </div>
+
+                <div class="bg-white/10 rounded-lg p-4 space-y-2">
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-300">Progreso de Campaña</span>
+                    <span class="text-[#B8FF6C]">78%</span>
+                  </div>
+                  <div class="w-full bg-white/20 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] h-2 rounded-full" style="width: 78%"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -621,7 +584,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8" id="reviewsGrid">
+        <div class="grid md:grid-cols-3 gap-8">
           <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
             <div class="flex items-center mb-4">
               <div class="flex text-[#B8FF6C]">
@@ -694,18 +657,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- Dynamic reviews container -->
-        <div id="dynamicReviews" class="grid md:grid-cols-3 gap-8 mt-8">
-          <!-- Dynamic reviews will be inserted here -->
-        </div>
-        
-        <!-- Load More Button -->
-        <div class="text-center mt-12">
-          <button id="loadMoreReviewsBtn" class="px-8 py-4 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-[#5936FF]/30 transition-all duration-300 hidden">
-            Ver más reseñas
-          </button>
-        </div>
 
         <!-- Add review form for logged in users -->
         <div class="mt-16">
@@ -721,11 +672,11 @@
               <div class="mb-6">
                 <label class="block text-sm font-semibold text-gray-700 mb-2">Calificación</label>
                 <div class="flex space-x-2" id="ratingStars">
-                  <button type="button" class="star-btn" data-value="1"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
-                  <button type="button" class="star-btn" data-value="2"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
-                  <button type="button" class="star-btn" data-value="3"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
-                  <button type="button" class="star-btn" data-value="4"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
-                  <button type="button" class="star-btn" data-value="5"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
+                  <button type="button" class="star-btn" data-rating="1"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
+                  <button type="button" class="star-btn" data-rating="2"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
+                  <button type="button" class="star-btn" data-rating="3"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
+                  <button type="button" class="star-btn" data-rating="4"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
+                  <button type="button" class="star-btn" data-rating="5"><i data-lucide="star" class="w-8 h-8 text-gray-300"></i></button>
                 </div>
                 <input type="hidden" id="reviewRating" name="rating" value="0">
               </div>
@@ -739,17 +690,6 @@
                 Enviar reseña
               </button>
             </form>
-          </div>
-        </div>
-        
-        <!-- Display existing reviews -->
-        <div id="existingReviews" class="mt-16">
-          <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-2">Reseñas de Clientes</h3>
-            <p class="text-gray-600">Lo que dicen quienes ya han trabajado con nosotros</p>
-          </div>
-          <div id="reviewsContainer" class="grid md:grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <!-- Reviews will be loaded here -->
           </div>
         </div>
       </div>
@@ -948,7 +888,7 @@
       const loginButton = document.getElementById('loginButton');
       const registerButton = document.getElementById('registerButton');
       const loginButtonNav = document.getElementById('loginButtonNav');
-      const logoutButtonNav = document.getElementById('logoutButtonNav');
+      const dashboardLink = document.getElementById('dashboardLink');
       const consultationModal = document.getElementById('consultationModal');
       const closeConsultationModal = document.getElementById('closeConsultationModal');
       const consultationForm = document.getElementById('consultationForm');
@@ -987,14 +927,11 @@
       function updateUIForUser() {
         if (currentUser) {
           loginButtonNav.style.display = 'none';
-          logoutButtonNav.style.display = 'block';
+          dashboardLink.style.display = 'block';
         } else {
           loginButtonNav.style.display = 'block';
-          logoutButtonNav.style.display = 'none';
+          dashboardLink.style.display = 'none';
         }
-
-        // Update review form access based on session status
-        updateReviewFormAccess();
       }
       
       // Show login modal
@@ -1024,19 +961,11 @@
       // Show consultation modal
       function showConsultationModal() {
         // Check if user is logged in
-        if (!currentUser) {
-          mostrarAlerta('Inicia sesión para poder solicitar una asesoría gratuita.', 'Sesión requerida');
-          // After alert is shown, the OK button will trigger the alert's close function
-          // We need to add an event listener to redirect to login after alert is closed
-          setTimeout(() => {
-            showLoginModal();
-          }, 500); // Small delay to ensure alert is processed
-          return;
+        if (currentUser) {
+          // If logged in, pre-fill the form with user data
+          document.getElementById('consultationName').value = currentUser.name;
+          document.getElementById('consultationEmail').value = currentUser.email;
         }
-
-        // If logged in, pre-fill the form with user data
-        document.getElementById('consultationName').value = currentUser.name;
-        document.getElementById('consultationEmail').value = currentUser.email;
         consultationModal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
@@ -1113,177 +1042,45 @@
         showNotification('Registro exitoso');
       }
       
-      // Logout function
+      // Logout function - redirect to dashboard to check auth
       function logout() {
         currentUser = null;
         localStorage.removeItem('unioUser');
         updateUIForUser();
         showNotification('Sesión cerrada');
-        // Optionally redirect to home page after logout
-        // window.location.href = 'index.html';
       }
       
-      // Alert Modal Elements
-      const alertModal = document.getElementById('alertModal');
-      const closeAlertModal = document.getElementById('closeAlertModal');
-      const alertTitle = document.getElementById('alertTitle');
-      const alertMessage = document.getElementById('alertMessage');
-      const alertOkButton = document.getElementById('alertOkButton');
-      const alertIcon = document.getElementById('alertIcon');
-      
-      // Show alert modal
-      function mostrarAlerta(message, title = 'Alerta', type = 'info') {
-        // Set title
-        alertTitle.textContent = title;
-        
-        // Set message
-        alertMessage.textContent = message;
-        alertMessage.innerHTML = message;
-        
-        // Set icon and color based on type
-        let iconType = 'info';
-        let gradientClass = 'from-[#5936FF] to-[#B8FF6C]';
-        
-        if (type === 'success') {
-          iconType = 'check-circle';
-          gradientClass = 'from-[#B8FF6C] to-[#7eff00]';
-        } else if (type === 'error') {
-          iconType = 'alert-circle';
-          gradientClass = 'from-[#FF6B6B] to-[#FF8E8E]';
-        } else if (type === 'warning') {
-          iconType = 'alert-triangle';
-          gradientClass = 'from-[#FFD93D] to-[#FBBF24]';
-        }
-        
-        // Update icon
-        alertIcon.className = `w-16 h-16 bg-gradient-to-br ${gradientClass} rounded-full flex items-center justify-center`;
-        const iconElement = alertIcon.querySelector('i');
-        iconElement.setAttribute('data-lucide', iconType);
-        iconElement.className = 'w-8 h-8 text-white';
-        
-        // Reinitialize lucide icon
-        lucide.createIcons();
-        
-        // Show modal
-        alertModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-      
-      // Show alert modal with login/register options
-      function mostrarAlertaConOpciones(message, title = 'Alerta') {
-        // Set title
-        alertTitle.textContent = title;
-        
-        // Set message with buttons
-        alertMessage.innerHTML = `
-          <div class="text-center">
-            <p class="text-gray-600 mb-6">${message}</p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-              <button id="alertLoginBtn" class="px-6 py-2 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-                Iniciar sesión
-              </button>
-              <button id="alertRegisterBtn" class="px-6 py-2 bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] text-[#0A0F3C] rounded-lg font-semibold hover:shadow-lg transition-all">
-                Registrarme
-              </button>
-            </div>
-          </div>
-        `;
-        
-        // Set icon and color
-        alertIcon.className = 'w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#B8FF6C] rounded-full flex items-center justify-center';
-        const iconElement = alertIcon.querySelector('i');
-        iconElement.setAttribute('data-lucide', 'info');
-        iconElement.className = 'w-8 h-8 text-white';
-        
-        // Hide the default OK button
-        alertOkButton.style.display = 'none';
-        
-        // Reinitialize lucide icon
-        lucide.createIcons();
-        
-        // Show modal
-        alertModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Add event listeners to new buttons after they exist in DOM
-        setTimeout(() => {
-          document.getElementById('alertLoginBtn')?.addEventListener('click', function() {
-            ocultarAlerta();
-            showLoginModal();
-          });
-          
-          document.getElementById('alertRegisterBtn')?.addEventListener('click', function() {
-            ocultarAlerta();
-            showRegister();
-            showLoginModal();
-          });
-        }, 100);
-      }
-      
-      // Override the close button to handle temporary buttons
-      function ocultarAlerta() {
-        alertModal.classList.remove('active');
-        document.body.style.overflow = '';
-        // Restore the default OK button
-        alertOkButton.style.display = 'block';
-      }
-      
-      // Hide alert modal
-      function ocultarAlerta() {
-        alertModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      
-      // Close alert modal event listeners
-      closeAlertModal.addEventListener('click', function() {
-        // Restore the default OK button when closing
-        alertOkButton.style.display = 'block';
-        alertModal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      alertOkButton.addEventListener('click', function() {
-        // Restore the default OK button when closing
-        alertOkButton.style.display = 'block';
-        alertModal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      // Also close when clicking on overlay
-      alertModal.addEventListener('click', function(e) {
-        if (e.target === alertModal) {
-          // Restore the default OK button when closing
-          alertOkButton.style.display = 'block';
-          alertModal.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Wrapper function to maintain compatibility with existing code
+      // Show notification
       function showNotification(message, type = 'success') {
-        let title = 'Éxito';
-        if (type === 'error') {
-          title = 'Error';
-        } else if (type === 'info') {
-          title = 'Información';
-        }
-        mostrarAlerta(message, title, type);
+        // Remove any existing notifications
+        const existingNotifications = document.querySelectorAll('.notification');
+        existingNotifications.forEach(notification => notification.remove());
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 notification ${
+          type === 'success' ? 'bg-green-500' : 'bg-red-500'
+        } text-white`;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.remove();
+          }
+        }, 3000);
       }
       
       // Handle contact form submission
       function handleContactForm(e) {
         e.preventDefault();
-
-        // Check if user is logged in
-        if (!currentUser) {
-          mostrarAlerta('Debes iniciar sesión para enviar un mensaje de contacto.', 'Sesión requerida');
-          return;
-        }
-
+        
         const name = document.getElementById('contactName').value;
         const email = document.getElementById('contactEmail').value;
         const message = document.getElementById('contactMessage').value;
-
+        
         if (!name || !email || !message) {
           showNotification('Por favor, completa todos los campos', 'error');
           return;
@@ -1347,131 +1144,6 @@
         let consultations = JSON.parse(localStorage.getItem('unioConsultationRequests') || '[]');
         consultations.push(consultationData);
         localStorage.setItem('unioConsultationRequests', JSON.stringify(consultations));
-        
-        // Reset form
-        document.getElementById('consultationForm').reset();
-        
-        hideConsultationModal();
-        showNotification('Solicitud de asesoría enviada. Te contactaremos pronto.');
-      }
-      
-      // Function to send email (simulated with localStorage and notification)
-      function sendEmail(toEmail, subject, body) {
-        // In a real application, this would connect to an email service
-        // For now, we'll store in localStorage and show a notification
-        const emailData = {
-          to: toEmail,
-          subject: subject,
-          body: body,
-          sentAt: new Date().toISOString(),
-          status: 'simulated_sent'
-        };
-        
-        // Store sent emails in localStorage
-        let emails = JSON.parse(localStorage.getItem('unioSentEmails') || '[]');
-        emails.push(emailData);
-        localStorage.setItem('unioSentEmails', JSON.stringify(emails));
-        
-        return Promise.resolve(emailData);
-      }
-      
-      // Handle contact form submission
-      function handleContactForm(e) {
-        e.preventDefault();
-
-        // Check if user is logged in
-        if (!currentUser) {
-          mostrarAlerta('Debes iniciar sesión para enviar un mensaje de contacto.', 'Sesión requerida');
-          return;
-        }
-
-        const name = document.getElementById('contactName').value;
-        const email = document.getElementById('contactEmail').value;
-        const message = document.getElementById('contactMessage').value;
-
-        if (!name || !email || !message) {
-          showNotification('Por favor, completa todos los campos', 'error');
-          return;
-        }
-        
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          showNotification('Por favor, ingresa un email válido', 'error');
-          return;
-        }
-        
-        // Save to localStorage
-        const contactData = {
-          name,
-          email,
-          message,
-          date: new Date().toISOString()
-        };
-        
-        // Get existing messages or initialize array
-        let messages = JSON.parse(localStorage.getItem('unioContactMessages') || '[]');
-        messages.push(contactData);
-        localStorage.setItem('unioContactMessages', JSON.stringify(messages));
-        
-        // Send email notification to admin
-        const emailBody = `Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}\nFecha: ${new Date().toLocaleString()}`;
-        sendEmail('rominabautistaa0@gmail.com', 'Nuevo mensaje de contacto de ÜNIO', emailBody)
-          .then(() => {
-            console.log('Email de contacto enviado a admin');
-          })
-          .catch(error => {
-            console.error('Error enviando email de contacto:', error);
-          });
-        
-        // Reset form
-        document.getElementById('contactForm').reset();
-        
-        showNotification('Mensaje enviado correctamente');
-      }
-      
-      // Handle consultation form submission
-      function handleConsultationForm(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('consultationName').value;
-        const email = document.getElementById('consultationEmail').value;
-        const message = document.getElementById('consultationMessage').value;
-        
-        if (!name || !email || !message) {
-          showNotification('Por favor, completa todos los campos', 'error');
-          return;
-        }
-        
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          showNotification('Por favor, ingresa un email válido', 'error');
-          return;
-        }
-        
-        // Save to localStorage
-        const consultationData = {
-          name,
-          email,
-          message,
-          date: new Date().toISOString()
-        };
-        
-        // Get existing consultations or initialize array
-        let consultations = JSON.parse(localStorage.getItem('unioConsultationRequests') || '[]');
-        consultations.push(consultationData);
-        localStorage.setItem('unioConsultationRequests', JSON.stringify(consultations));
-        
-        // Send email notification to admin
-        const emailBody = `Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}\nFecha: ${new Date().toLocaleString()}\nTipo: Solicitud de asesoría`;
-        sendEmail('rominabautistaa0@gmail.com', 'Nueva solicitud de asesoría de ÜNIO', emailBody)
-          .then(() => {
-            console.log('Email de asesoría enviado a admin');
-          })
-          .catch(error => {
-            console.error('Error enviando email de asesoría:', error);
-          });
         
         // Reset form
         document.getElementById('consultationForm').reset();
@@ -1493,13 +1165,14 @@
         }
         
         if (!currentUser) {
-          mostrarAlerta('Debes iniciar sesión para enviar una reseña', 'Sesión requerida', 'info');
+          showNotification('Debes iniciar sesión para dejar una reseña', 'error');
+          showLoginModal();
           return;
         }
         
         // Save to localStorage
         const reviewData = {
-          name: currentUser.name, // Show the logged in user's name
+          name: currentUser.name,
           rating: parseInt(rating),
           text: reviewText,
           date: new Date().toISOString()
@@ -1521,206 +1194,27 @@
         });
         ratingInput.value = '0';
         
-        // Create and insert the new review element at the beginning of dynamic reviews
-        const dynamicReviewsContainer = document.getElementById('dynamicReviews');
-        const reviewElement = createReviewElement(reviewData);
-        
-        // Insert at the beginning to show newest reviews first
-        if (dynamicReviewsContainer.firstChild) {
-          dynamicReviewsContainer.insertBefore(reviewElement, dynamicReviewsContainer.firstChild);
-        } else {
-          dynamicReviewsContainer.appendChild(reviewElement);
-        }
-        
-        // Initialize lucide icons for the new element
-        lucide.createIcons();
-        
-        mostrarAlerta('Reseña enviada correctamente', 'Éxito', 'success');
+        showNotification('Reseña enviada correctamente');
       }
       
-      // Function to create review element with the same format as existing testimonials
-      function createReviewElement(review) {
-        const reviewDate = new Date(review.date);
-        const formattedDate = reviewDate.toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        });
-        
-        const reviewElement = document.createElement('div');
-        reviewElement.className = 'bg-white rounded-2xl p-8 shadow-lg border border-gray-200';
-        reviewElement.innerHTML = `
-          <div class="flex items-center mb-4">
-            <div class="flex text-[#B8FF6C]">
-              ${'<i data-lucide="star" class="w-5 h-5 fill-current"></i>'.repeat(review.rating)}
-              ${'<i data-lucide="star" class="w-5 h-5 text-gray-300"></i>'.repeat(5 - review.rating)}
-            </div>
-          </div>
-          <p class="text-gray-600 mb-6 italic">
-            "${review.text}"
-          </p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gradient-to-br from-[#5936FF] to-[#7c5aff] rounded-full flex items-center justify-center text-white font-bold mr-4">
-              ${review.name.charAt(0)}
-            </div>
-            <div>
-              <h4 class="font-bold text-[#0A0F3C]">${review.name}</h4>
-              <p class="text-sm text-gray-500">${formattedDate}</p>
-            </div>
-          </div>
-        `;
-        
-        return reviewElement;
-      }
-      
-      // Function to display reviews in the main testimonials section
-      function displayReviews() {
-        const dynamicReviewsContainer = document.getElementById('dynamicReviews');
-        const reviews = JSON.parse(localStorage.getItem('unioReviews') || '[]');
-        
-        // Clear container
-        dynamicReviewsContainer.innerHTML = '';
-        
-        if (reviews.length === 0) {
-          return;
-        }
-        
-        // Sort reviews by date (newest first)
-        reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-        
-        // Add each review to the dynamic container
-        reviews.forEach(review => {
-          const reviewElement = createReviewElement(review);
-          dynamicReviewsContainer.appendChild(reviewElement);
-        });
-        
-        // Show or hide the "Load More" button based on number of reviews
-        const loadMoreBtn = document.getElementById('loadMoreReviewsBtn');
-        if (reviews.length > 0) {
-          loadMoreBtn.classList.remove('hidden');
-        }
-        
-        // Initialize lucide icons again
-        lucide.createIcons();
-      }
-
-      // Function to manage review form access based on session status
-      function updateReviewFormAccess() {
-        if (reviewForm) {
-          const reviewText = document.getElementById('reviewText');
-          const ratingStars = document.querySelectorAll('.star-btn');
-          const reviewSubmitBtn = reviewForm.querySelector('button[type="submit"]');
-
-          if (!currentUser) {
-            // Disable form elements if not logged in
-            if (reviewText) {
-              reviewText.disabled = true;
-              reviewText.placeholder = "Debes iniciar sesión para dejar una reseña";
-              reviewText.classList.add('bg-gray-100', 'cursor-not-allowed');
-            }
-
-            ratingStars.forEach(star => {
-              star.disabled = true;
-              star.style.cursor = 'not-allowed';
-              star.classList.add('cursor-not-allowed');
-            });
-
-            if (reviewSubmitBtn) {
-              reviewSubmitBtn.disabled = true;
-              reviewSubmitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-              reviewSubmitBtn.textContent = "Iniciar sesión para reseñar";
-            }
-          } else {
-            // Enable form elements if logged in
-            if (reviewText) {
-              reviewText.disabled = false;
-              reviewText.placeholder = "Cuéntanos sobre tu experiencia con nuestros servicios...";
-              reviewText.classList.remove('bg-gray-100', 'cursor-not-allowed');
-            }
-
-            ratingStars.forEach(star => {
-              star.disabled = false;
-              star.style.cursor = 'pointer';
-              star.classList.remove('cursor-not-allowed');
-            });
-
-            if (reviewSubmitBtn) {
-              reviewSubmitBtn.disabled = false;
-              reviewSubmitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-              reviewSubmitBtn.textContent = "Enviar reseña";
-            }
-          }
-        }
-      }
-
-      // Function to handle click on disabled review elements
-      function handleDisabledReviewElements() {
-        if (!currentUser) {
-          mostrarAlerta('Debes iniciar sesión para poder dejar una reseña.', 'Sesión requerida');
-          setTimeout(() => {
-            showLoginModal();
-          }, 500);
-        }
-      }
-
-      // Star rating functionality with immediate visual feedback
-      const ratingStarsContainer = document.getElementById('ratingStars');
-      let currentRating = 0;
-      
-      // Function to update stars based on rating
-      function updateStars(rating, isHover = false) {
-        starButtons.forEach((btn, index) => {
-          if (index < rating) {
-            // Apply hovered or active class based on context
-            if (isHover) {
-              btn.classList.add('hovered');
-              btn.classList.remove('active');
-            } else {
-              btn.classList.add('active');
-              btn.classList.remove('hovered');
-            }
-          } else {
-            btn.classList.remove('hovered', 'active');
-          }
-        });
-      }
-      
+      // Star rating functionality
       starButtons.forEach(button => {
-        // Click event to set rating
         button.addEventListener('click', function() {
-          const rating = parseInt(this.getAttribute('data-value'));
-          currentRating = rating;
+          const rating = parseInt(this.getAttribute('data-rating'));
           ratingInput.value = rating;
           
-          // Update stars to be active (permanent) immediately
-          updateStars(rating, false);
-        });
-        
-        // Mouse over event for hover effect
-        button.addEventListener('mouseover', function() {
-          const rating = parseInt(this.getAttribute('data-value'));
-          
-          // Update stars to be hovered (temporary)
-          updateStars(rating, true);
-        });
-      });
-      
-      // Mouse out event on the container to reset hover effect but preserve selection
-      ratingStarsContainer.addEventListener('mouseout', function() {
-        if (currentRating > 0) {
-          // If there's a selected rating, restore active state
-          updateStars(currentRating, false);
-        } else {
-          // If no rating selected, remove all states
-          starButtons.forEach(btn => {
-            btn.classList.remove('hovered', 'active');
+          // Update star icons
+          starButtons.forEach((btn, index) => {
+            const icon = btn.querySelector('i');
+            if (index < rating) {
+              icon.className = 'w-8 h-8 text-[#B8FF6C]';
+              icon.setAttribute('fill', 'currentColor');
+            } else {
+              icon.className = 'w-8 h-8 text-gray-300';
+              icon.removeAttribute('fill');
+            }
           });
-        }
-      });
-      
-      // Load reviews on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        displayReviews();
+        });
       });
       
       // Smooth scrolling function
@@ -1795,40 +1289,9 @@
       // Open app button - opens mobile app in a new page
       openAppBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Check if user is logged in
-        if (!currentUser) {
-          // Show modal with login/register options
-          mostrarAlertaConOpciones('Para acceder a la aplicación, primero inicia sesión o crea una cuenta.', 'Sesión requerida');
-          return;
-        }
         window.location.href = 'app-movil/index.html';
       });
-
-      // Logout button event listener
-      logoutButtonNav.addEventListener('click', () => {
-        logout();
-      });
-
-      // Add event listeners to handle clicks on disabled review form elements
-      const reviewText = document.getElementById('reviewText');
-      if (reviewText) {
-        reviewText.addEventListener('focus', function() {
-          if (!currentUser && this.disabled) {
-            handleDisabledReviewElements();
-          }
-        });
-      }
-
-      // Add event listeners to rating stars
-      const ratingStars = document.querySelectorAll('.star-btn');
-      ratingStars.forEach(star => {
-        star.addEventListener('click', function() {
-          if (!currentUser && this.disabled) {
-            handleDisabledReviewElements();
-          }
-        });
-      });
-
+      
       // Initialize the app
       loadUser();
       
