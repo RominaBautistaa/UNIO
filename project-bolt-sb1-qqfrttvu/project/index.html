@@ -2406,8 +2406,7 @@
         e.preventDefault();
         // Check if user is logged in
         if (!currentUser) {
-          // Show modal with login/register options
-          mostrarAlertaConOpciones('Para acceder a la aplicación, primero inicia sesión o crea una cuenta.', 'Sesión requerida');
+          showSessionValidationModal();
           return;
         }
 

@@ -1289,6 +1289,12 @@
       // Open app button - opens mobile app in a new page
       openAppBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        // Check if user is logged in
+        if (!currentUser) {
+          showSessionValidationModal();
+          return;
+        }
+
         window.location.href = 'app-movil/index.html';
       });
       
