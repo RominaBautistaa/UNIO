@@ -329,6 +329,29 @@
       </div>
     </div>
 
+    <!-- Session Validation Modal -->
+    <div id="sessionValidationModal" class="modal-overlay">
+      <div class="modal-container max-w-md">
+        <div class="p-8 text-center">
+          <div class="flex justify-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#B8FF6C] rounded-full flex items-center justify-center">
+              <i data-lucide="lock" class="w-8 h-8 text-white"></i>
+            </div>
+          </div>
+          <h3 id="sessionValidationTitle" class="text-2xl font-bold text-[#0A0F3C] mb-4">Debes iniciar sesión</h3>
+          <p id="sessionValidationMessage" class="text-gray-600 mb-8">Inicia sesión para poder continuar con esta acción.</p>
+          <div class="flex gap-4">
+            <button id="sessionCancelBtn" class="flex-1 px-4 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-all">
+              Cancelar
+            </button>
+            <button id="sessionLoginBtn" class="flex-1 px-4 py-3 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile App Modal -->
     <div id="mobileAppModal" class="modal-overlay">
       <div class="modal-container max-w-md w-full mx-auto">
@@ -741,7 +764,7 @@
 
           <div class="relative hidden lg:block">
             <div class="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl flex items-center justify-center">
-              <img src="./img/panel.png" alt="Panel ÜNIO" class="max-w-full max-h-full object-contain rounded-lg">
+              <img src="/img/panel.png" alt="Panel ÜNIO" class="max-w-full max-h-full object-contain rounded-lg">
             </div>
 
             <div class="absolute -z-10 top-10 right-10 w-72 h-72 bg-[#5936FF] rounded-full blur-3xl opacity-30"></div>
@@ -777,7 +800,7 @@
               Desarrollamos estrategias de contenido personalizadas que resuenan con tu audiencia y fortalecen tu identidad de marca.
             </p>
 
-            <a href="servicio-estrategia.html" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
+            <a href="/servicio/estrategia-creativa" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
               Ver más
               <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
@@ -796,7 +819,7 @@
               Optimizamos tus campañas publicitarias con IA para maximizar el ROI y alcanzar tus objetivos de marketing.
             </p>
 
-            <a href="servicio-automatizacion.html" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
+            <a href="/servicio/automatizacion-campanas" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
               Ver más
               <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
@@ -815,7 +838,7 @@
               Análisis profundo de datos y reportes en tiempo real para tomar decisiones basadas en información precisa.
             </p>
 
-            <a href="servicio-metricas.html" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
+            <a href="/servicio/metricas-inteligentes" class="service-details-btn flex items-center gap-2 text-[#5936FF] font-semibold group-hover:gap-3 transition-all">
               Ver más
               <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
@@ -1585,12 +1608,7 @@
       function showConsultationModal() {
         // Check if user is logged in
         if (!currentUser) {
-          mostrarAlerta('Inicia sesión para poder solicitar una asesoría gratuita.', 'Sesión requerida');
-          // After alert is shown, the OK button will trigger the alert's close function
-          // We need to add an event listener to redirect to login after alert is closed
-          setTimeout(() => {
-            showLoginModal();
-          }, 500); // Small delay to ensure alert is processed
+          showSessionValidationModal();
           return;
         }
 
@@ -1692,7 +1710,24 @@
       const alertMessage = document.getElementById('alertMessage');
       const alertOkButton = document.getElementById('alertOkButton');
       const alertIcon = document.getElementById('alertIcon');
-      
+      const sessionValidationModal = document.getElementById('sessionValidationModal');
+      const sessionCancelBtn = document.getElementById('sessionCancelBtn');
+      const sessionLoginBtn = document.getElementById('sessionLoginBtn');
+      const sessionValidationTitle = document.getElementById('sessionValidationTitle');
+      const sessionValidationMessage = document.getElementById('sessionValidationMessage');
+
+      // Show session validation modal
+      function showSessionValidationModal() {
+        sessionValidationModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Hide session validation modal
+      function hideSessionValidationModal() {
+        sessionValidationModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
       // Show alert modal
       function mostrarAlerta(message, title = 'Alerta', type = 'info') {
         // Set title
@@ -2055,7 +2090,7 @@
         }
         
         if (!currentUser) {
-          mostrarAlerta('Debes iniciar sesión para enviar una reseña', 'Sesión requerida', 'info');
+          showSessionValidationModal();
           return;
         }
         
@@ -2313,7 +2348,19 @@
               hideConsultationModal();
           }
       });
-      
+
+      // Session validation modal event listeners
+      sessionCancelBtn.addEventListener('click', hideSessionValidationModal);
+      sessionLoginBtn.addEventListener('click', function() {
+          hideSessionValidationModal();
+          showLoginModal();
+      });
+      alertModal.addEventListener('click', function(e) {
+          if (e.target === alertModal) {
+              hideSessionValidationModal();
+          }
+      });
+
       showRegisterForm.addEventListener('click', showRegister);
       showLoginForm.addEventListener('click', showLogin);
       loginButton.addEventListener('click', login);

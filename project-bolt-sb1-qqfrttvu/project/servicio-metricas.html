@@ -1,320 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/logoUNIO.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/logoUNIO.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/logoUNIO.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Métricas Inteligentes - ÜNIO</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-      
-      body {
-        font-family: 'Poppins', sans-serif;
-        overflow-x: hidden;
-      }
-      
-      .section {
-        scroll-margin-top: 100px;
-      }
-    </style>
-  </head>
-  <body class="bg-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-gradient-to-br from-[#5936FF] to-[#7eff00] rounded-lg flex items-center justify-center">
-              <span class="text-white font-bold text-lg">Ü</span>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Métricas Inteligentes - ÜNIO</title>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/logoUNIO.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/logoUNIO.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/logoUNIO.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+    }
+
+    .section {
+      scroll-margin-top: 2rem;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-[#5936FF] to-[#7eff00] rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">Ü</span>
+          </div>
+          <span class="text-xl font-bold text-[#0A0F3C]">ÜNIO</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Inicio</a>
+          <a href="#about" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Acerca</a>
+          <a href="#services" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Servicios</a>
+          <a href="#testimonials" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Reseñas</a>
+          <a href="#pricing" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Precios</a>
+          <a href="#contact" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Contacto</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button id="loginButtonNav" class="px-4 py-2 text-[#5936FF] font-semibold hover:bg-[#5936FF]/10 rounded-lg transition-colors">
+            Iniciar sesión
+          </button>
+          <button id="logoutButtonNav" class="px-4 py-2 text-white bg-[#5936FF] font-semibold hover:bg-[#7c5aff] rounded-lg transition-colors hidden">
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav fixed bottom-0 w-full bg-white border-t border-gray-200 z-50 md:hidden">
+    <div class="grid grid-cols-5">
+      <a href="index.html" class="py-3 flex flex-col items-center gap-1 text-[#0A0F3C] hover:text-[#5936FF] transition-colors">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-xs">Inicio</span>
+      </a>
+      <a href="#about" class="py-3 flex flex-col items-center gap-1 text-[#0A0F3C] hover:text-[#5936FF] transition-colors">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <span class="text-xs">Acerca</span>
+      </a>
+      <a href="#services" class="py-3 flex flex-col items-center gap-1 text-[#0A0F3C] hover:text-[#5936FF] transition-colors">
+        <i data-lucide="briefcase" class="w-5 h-5"></i>
+        <span class="text-xs">Servicios</span>
+      </a>
+      <a href="#testimonials" class="py-3 flex flex-col items-center gap-1 text-[#0A0F3C] hover:text-[#5936FF] transition-colors">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span class="text-xs">Reseñas</span>
+      </a>
+      <a href="#contact" class="py-3 flex flex-col items-center gap-1 text-[#0A0F3C] hover:text-[#5936FF] transition-colors">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <span class="text-xs">Contacto</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Service Detail Section -->
+  <section class="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-[#7eff00] to-[#B8FF6C] rounded-xl flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-8 h-8 text-[#0A0F3C]"></i>
             </div>
-            <span class="text-xl font-bold text-[#0A0F3C]">ÜNIO</span>
+            <h1 class="text-4xl font-bold text-[#0A0F3C]">Métricas Inteligentes</h1>
           </div>
-          
-          <div class="hidden md:flex items-center gap-8">
-            <a href="index.html" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Inicio</a>
-            <a href="index.html#services" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Servicios</a>
-            <a href="index.html#portfolio" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Portafolio</a>
-            <a href="index.html#pricing" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Precios</a>
-            <a href="index.html#contact" class="text-[#0A0F3C] font-semibold hover:text-[#5936FF] transition-colors">Contacto</a>
+
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Monitoreo avanzado con dashboards en tiempo real para tomar decisiones estratégicas basadas en datos.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h2 class="text-2xl font-bold text-[#0A0F3C] mb-6">Beneficios</h2>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#5936FF] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                  </div>
+                  <span class="text-gray-700">Información precisa</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#5936FF] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                  </div>
+                  <span class="text-gray-700">Alertas automáticas</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#5936FF] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                  </div>
+                  <span class="text-gray-700">Reportes listos para presentación</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-[#0A0F3C] mb-6">Aplicaciones</h2>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#B8FF6C] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-[#0A0F3C]"></i>
+                  </div>
+                  <span class="text-gray-700">KPI de redes</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#B8FF6C] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-[#0A0F3C]"></i>
+                  </div>
+                  <span class="text-gray-700">Análisis de rendimiento</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-[#B8FF6C] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <i data-lucide="check" class="w-4 h-4 text-[#0A0F3C]"></i>
+                  </div>
+                  <span class="text-gray-700">Tracking de campañas</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          
-          <div class="flex items-center gap-4">
-            <a href="dashboard.html" id="dashboardLink" class="px-4 py-2 text-white bg-[#5936FF] font-semibold hover:bg-[#7c5aff] rounded-lg transition-colors">
-              Dashboard
+
+          <div class="text-center">
+            <a href="index.html" class="inline-block px-8 py-4 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+              Volver a Servicios
             </a>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- Hero Section for Service -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0F3C] via-[#1a1555] to-[#5936FF] pt-20">
-      <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] animate-pulse"></div>
-      </div>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
 
-      <div class="container mx-auto px-6 py-20 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="text-white space-y-8">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-[#B8FF6C]/30">
-              <i data-lucide="bar-chart-3" class="w-4 h-4 text-[#B8FF6C]"></i>
-              <span class="text-sm text-gray-200">Métricas Inteligentes</span>
-            </div>
+    // DOM Elements
+    const loginButtonNav = document.getElementById('loginButtonNav');
+    const logoutButtonNav = document.getElementById('logoutButtonNav');
 
-            <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
-              Métricas Inteligentes con IA
-            </h1>
-
-            <p class="text-xl text-gray-300">
-              Análisis profundo de datos y reportes en tiempo real para tomar decisiones basadas en información precisa.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4">
-              <button id="requestConsultationBtn" class="px-8 py-4 bg-white text-[#0A0F3C] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2">
-                Solicitar asesoría
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
-              </button>
-
-              <a href="index.html" class="px-8 py-4 bg-[#B8FF6C] text-[#0A0F3C] rounded-lg font-semibold hover:bg-[#a8ef5c] transition-all duration-300 flex items-center justify-center gap-2">
-                Volver al inicio
-                <i data-lucide="home" class="w-5 h-5"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="relative">
-            <div class="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl">
-              <div class="space-y-6">
-                <h3 class="text-white font-semibold text-xl">Beneficios de Métricas Inteligentes</h3>
-                
-                <div class="space-y-4">
-                  <div class="flex items-start gap-4">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-[#B8FF6C] mt-1"></i>
-                    <div>
-                      <h4 class="text-white font-medium">Visibilidad total</h4>
-                      <p class="text-gray-300 text-sm">Acceso en tiempo real a todas las métricas que importan para tu negocio</p>
-                    </div>
-                  </div>
-                  
-                  <div class="flex items-start gap-4">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-[#B8FF6C] mt-1"></i>
-                    <div>
-                      <h4 class="text-white font-medium">Predicciones precisas</h4>
-                      <p class="text-gray-300 text-sm">IA que predice tendencias y comportamientos futuros de tu audiencia</p>
-                    </div>
-                  </div>
-                  
-                  <div class="flex items-start gap-4">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-[#B8FF6C] mt-1"></i>
-                    <div>
-                      <h4 class="text-white font-medium">Toma de decisiones informada</h4>
-                      <p class="text-gray-300 text-sm">Datos accionables que guían tu estrategia de marketing</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="absolute -z-10 top-10 right-10 w-72 h-72 bg-[#5936FF] rounded-full blur-3xl opacity-30"></div>
-            <div class="absolute -z-10 bottom-10 left-10 w-72 h-72 bg-[#B8FF6C] rounded-full blur-3xl opacity-20"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-24 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold text-[#0A0F3C] mb-4">
-            ¿Qué incluyen nuestras Métricas Inteligentes?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Un sistema de análisis completo que transforma datos en insights accionables
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#7c5aff] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="pie-chart" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">Análisis Profundo</h3>
-            <p class="text-gray-600">
-              Evaluación completa de todas las métricas relevantes para entender el rendimiento real de tu estrategia.
-            </p>
-          </div>
-
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#B8FF6C] to-[#7eff00] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="zap" class="w-8 h-8 text-[#0A0F3C]"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">Reportes en Tiempo Real</h3>
-            <p class="text-gray-600">
-              Accede a los datos actualizados constantemente para tomar decisiones rápidas y efectivas.
-            </p>
-          </div>
-
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#B8FF6C] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">Predicciones con IA</h3>
-            <p class="text-gray-600">
-              Algoritmos de inteligencia artificial que anticipan tendencias y oportunidades de mercado.
-            </p>
-          </div>
-
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#7c5aff] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="target" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">ROI Clarificado</h3>
-            <p class="text-gray-600">
-              Medición precisa del retorno de inversión para cada canal y campaña.
-            </p>
-          </div>
-
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#B8FF6C] to-[#7eff00] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="users" class="w-8 h-8 text-[#0A0F3C]"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">Comportamiento del Cliente</h3>
-            <p class="text-gray-600">
-              Análisis detallado del journey y patrones de comportamiento de tu audiencia.
-            </p>
-          </div>
-
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 hover:border-[#5936FF]/50 transition-all">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#B8FF6C] rounded-xl flex items-center justify-center mb-6">
-              <i data-lucide="bell" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#0A0F3C] mb-4">Alertas Inteligentes</h3>
-            <p class="text-gray-600">
-              Notificaciones personalizadas cuando se alcanzan objetivos o se detectan anomalías.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl lg:text-5xl font-bold text-[#0A0F3C] mb-6">
-          ¿Listo para tomar decisiones con datos?
-        </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-          Transforma tus datos en insights que impulsen el crecimiento de tu negocio
-        </p>
-        <button id="requestConsultationBtn2" class="px-8 py-4 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-[#5936FF]/30 transition-all duration-300">
-          Solicitar asesoría gratuita
-        </button>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#0A0F3C] text-white py-12">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div>
-            <div class="flex items-center gap-2 mb-4">
-              <div class="w-10 h-10 bg-gradient-to-br from-[#5936FF] to-[#7eff00] rounded-lg flex items-center justify-center">
-                <span class="text-white font-bold text-lg">Ü</span>
-              </div>
-              <span class="text-xl font-bold">ÜNIO</span>
-            </div>
-            <p class="text-gray-400">
-              Transformando marcas con inteligencia artificial y creatividad.
-            </p>
-          </div>
-
-          <div>
-            <h4 class="font-semibold text-lg mb-4">Enlaces</h4>
-            <ul class="space-y-2">
-              <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
-              <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Servicios</a></li>
-              <li><a href="index.html#portfolio" class="text-gray-400 hover:text-white transition-colors">Portafolio</a></li>
-              <li><a href="index.html#pricing" class="text-gray-400 hover:text-white transition-colors">Precios</a></li>
-              <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-semibold text-lg mb-4">Servicios</h4>
-            <ul class="space-y-2">
-              <li><a href="servicio-estrategia.html" class="text-gray-400 hover:text-white transition-colors">Estrategia Creativa</a></li>
-              <li><a href="servicio-automatizacion.html" class="text-gray-400 hover:text-white transition-colors">Automatización de Campañas</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-semibold text-lg mb-4">Contacto</h4>
-            <ul class="space-y-2">
-              <li class="text-gray-400">unio.club@gmail.com</li>
-              <li class="text-gray-400">Doña Rosa 349-297, Surco - Lima, Perú</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 ÜNIO. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      // Initialize Lucide icons
-      lucide.createIcons();
+    // Check authentication status
+    const user = localStorage.getItem('unioUser');
+    if (user) {
+      loginButtonNav.style.display = 'none';
+      logoutButtonNav.style.display = 'block';
       
-      // Get dashboard link to check authentication
-      const dashboardLink = document.getElementById('dashboardLink');
-      
-      // Check if user is logged in
-      function checkAuth() {
-        const user = localStorage.getItem('unioUser');
-        if (!user) {
-          // If not logged in, hide dashboard link
-          dashboardLink.style.display = 'none';
-        } else {
-          // If logged in, ensure dashboard link is visible
-          dashboardLink.style.display = 'block';
-        }
-      }
-      
-      // Event listeners for consultation buttons
-      document.getElementById('requestConsultationBtn').addEventListener('click', function() {
-        // Check if user is logged in
-        const user = localStorage.getItem('unioUser');
-        if (user) {
-          window.location.href = 'index.html#contact';
-        } else {
-          // If not logged in, redirect to main page with login modal
-          window.location.href = 'index.html';
-        }
+      logoutButtonNav.addEventListener('click', () => {
+        localStorage.removeItem('unioUser');
+        window.location.href = 'index.html';
       });
+    } else {
+      loginButtonNav.style.display = 'block';
+      logoutButtonNav.style.display = 'none';
       
-      document.getElementById('requestConsultationBtn2').addEventListener('click', function() {
-        // Check if user is logged in
-        const user = localStorage.getItem('unioUser');
-        if (user) {
-          window.location.href = 'index.html#contact';
-        } else {
-          // If not logged in, redirect to main page with login modal
-          window.location.href = 'index.html';
-        }
+      loginButtonNav.addEventListener('click', () => {
+        window.location.href = 'index.html';
       });
-      
-      // Initialize on page load
-      checkAuth();
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
