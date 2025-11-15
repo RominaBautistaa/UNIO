@@ -65,7 +65,21 @@
       .modal-overlay.active .modal-container {
         transform: scale(1);
       }
-      
+
+      /* Mobile app modal with dark background */
+      .modal-overlay:not(#mobileAppModal) {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      #mobileAppModal {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      #mobileAppModal.active {
+        background: linear-gradient(135deg, #0A0F3C 0%, #1a1555 50%, #5936FF 100%);
+        backdrop-filter: blur(4px);
+      }
+
       .modal-close-button {
         position: absolute;
         top: 1rem;
@@ -81,7 +95,16 @@
       .modal-close-button:hover {
         color: #6b7280;
       }
-      
+
+      /* App screen styles */
+      .app-screen {
+        display: none;
+      }
+
+      .app-screen.active {
+        display: block;
+      }
+
       /* Star Rating Styles */
       .star-btn {
         cursor: pointer;
@@ -231,6 +254,324 @@
           <button id="alertOkButton" class="px-8 py-3 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
             Aceptar
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile App Modal -->
+    <div id="mobileAppModal" class="modal-overlay">
+      <div class="modal-container max-w-md w-full mx-auto">
+        <div class="w-full max-w-sm mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
+          <!-- Header -->
+          <div class="bg-gradient-to-r from-[#0A0F3C] to-[#5936FF] px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <img src="./img/logoUNIO.png" alt="ÜNIO Logo" class="w-8 h-8 object-contain">
+              <h1 class="text-xl font-bold text-white">ÜNIO App</h1>
+            </div>
+            <button id="closeAppModal" class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+              <i data-lucide="x" class="w-5 h-5 text-white"></i>
+            </button>
+          </div>
+
+          <!-- App Content -->
+          <div class="h-[600px]">
+            <!-- App Inicio Screen -->
+            <div id="appInicioScreen" class="app-screen active h-full overflow-y-auto p-6">
+              <div class="space-y-6">
+                <div>
+                  <h2 class="text-2xl font-bold text-[#0A0F3C]">Bienvenido, <span id="appWelcomeName">Usuario</span></h2>
+                  <p class="text-gray-600">Aquí está el resumen de tu campaña</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#0A0F3C] to-[#5936FF] rounded-2xl p-6 text-white">
+                  <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-semibold">Progreso de Campaña</h3>
+                    <div class="w-3 h-3 bg-[#B8FF6C] rounded-full animate-pulse"></div>
+                  </div>
+
+                  <div class="flex items-center justify-center relative">
+                    <div class="relative w-48 h-48 rounded-full bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] flex items-center justify-center">
+                      <div class="absolute w-full h-full rounded-full bg-[#0A0F3C] m-2"></div>
+                      <div class="text-center z-10">
+                        <div class="text-3xl font-bold">78%</div>
+                        <div class="text-sm text-gray-300 mt-1">Completado</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 text-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-sm">
+                      <div class="w-2 h-2 bg-[#B8FF6C] rounded-full"></div>
+                      <span>Objetivo actual: Aumentar alcance en redes</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-[#0A0F3C]">Actividad Reciente</h3>
+                    <i data-lucide="calendar" class="w-5 h-5 text-gray-400"></i>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 hover:border-[#5936FF] transition-all">
+                      <div class="flex items-start gap-3">
+                        <i data-lucide="calendar" class="w-5 h-5 mt-0.5 text-green-500"></i>
+                        <div class="flex-1">
+                          <p class="font-semibold text-[#0A0F3C] text-sm">Reporte de Rendimiento Agosto</p>
+                          <p class="text-xs text-gray-500 mt-1">Hoy, 10:30 AM</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 hover:border-[#5936FF] transition-all">
+                      <div class="flex items-start gap-3">
+                        <i data-lucide="calendar" class="w-5 h-5 mt-0.5 text-green-500"></i>
+                        <div class="flex-1">
+                          <p class="font-semibold text-[#0A0F3C] text-sm">Pack de Contenido Semana 4</p>
+                          <p class="text-xs text-gray-500 mt-1">Ayer, 3:45 PM</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 hover:border-[#5936FF] transition-all">
+                      <div class="flex items-start gap-3">
+                        <i data-lucide="calendar" class="w-5 h-5 mt-0.5 text-yellow-500"></i>
+                        <div class="flex-1">
+                          <p class="font-semibold text-[#0A0F3C] text-sm">Reunión de Estrategia</p>
+                          <p class="text-xs text-gray-500 mt-1">Mañana, 9:00 AM</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="w-full py-3 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-xl font-semibold hover:shadow-lg transition-all">
+                  Ver detalles completos
+                </button>
+              </div>
+            </div>
+
+            <!-- App Tareas Screen -->
+            <div id="appTareasScreen" class="app-screen h-full overflow-y-auto p-6">
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-[#0A0F3C]">Tareas</h2>
+
+                <!-- En Progreso Section -->
+                <div>
+                  <h3 class="text-lg font-semibold text-[#0A0F3C] mb-3">En Progreso</h3>
+                  <div class="space-y-3">
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <p class="font-semibold text-[#0A0F3C]">Publicar contenido semana 4</p>
+                          <p class="text-sm text-gray-500">Hoy, 10:00 AM</p>
+                        </div>
+                        <button class="w-6 h-6 rounded-full bg-blue-500 border border-blue-500 flex items-center justify-center task-checkbox">
+                          <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pendiente Section -->
+                <div>
+                  <h3 class="text-lg font-semibold text-[#0A0F3C] mb-3">Pendiente</h3>
+                  <div class="space-y-3">
+                    <div class="bg-white border border-gray-200 rounded-xl p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <p class="font-semibold text-[#0A0F3C]">Revisar reporte de métricas</p>
+                          <p class="text-sm text-gray-500">Hoy, 2:00 PM</p>
+                        </div>
+                        <button class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center task-checkbox">
+                          <i data-lucide="check" class="w-4 h-4 text-transparent"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <p class="font-semibold text-[#0A0F3C]">Preparar presentación para cliente</p>
+                          <p class="text-sm text-gray-500">Mañana, 9:00 AM</p>
+                        </div>
+                        <button class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center task-checkbox">
+                          <i data-lucide="check" class="w-4 h-4 text-transparent"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Completado Section -->
+                <div>
+                  <h3 class="text-lg font-semibold text-[#0A0F3C] mb-3">Completado</h3>
+                  <div class="space-y-3">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 opacity-70">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <p class="font-semibold text-[#0A0F3C] line-through">Redactar guion video promocional</p>
+                          <p class="text-sm text-gray-500">Ayer, 5:30 PM</p>
+                        </div>
+                        <button class="w-6 h-6 rounded-full bg-green-500 border border-green-500 flex items-center justify-center task-checkbox">
+                          <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button id="suggestTasksBtn" class="w-full py-3 bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] text-[#0A0F3C] rounded-xl font-semibold hover:shadow-lg transition-all">
+                  Sugerir tareas con IA
+                </button>
+              </div>
+            </div>
+
+            <!-- App Entregas Screen -->
+            <div id="appEntregasScreen" class="app-screen h-full overflow-y-auto p-6">
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-[#0A0F3C]">Entregas</h2>
+                <div class="space-y-4">
+                  <div class="bg-white border border-gray-200 rounded-xl p-4">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <p class="font-semibold text-[#0A0F3C]">Pack de contenido semana 4</p>
+                        <p class="text-sm text-gray-500">Publicado - 12/11/2025</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button class="text-[#5936FF] font-medium text-sm download-btn">Descargar</button>
+                        <button class="text-[#B8FF6C] font-medium text-sm summarize-btn">Resumir</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-white border border-gray-200 rounded-xl p-4">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <p class="font-semibold text-[#0A0F3C]">Reporte de métricas agosto</p>
+                        <p class="text-sm text-gray-500">Pendiente - 15/11/2025</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button class="text-gray-400 font-medium text-sm cursor-not-allowed" disabled>Descargar</button>
+                        <button class="text-gray-400 font-medium text-sm cursor-not-allowed" disabled>Resumir</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-white border border-gray-200 rounded-xl p-4">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <p class="font-semibold text-[#0A0F3C]">Campaña de invierno</p>
+                        <p class="text-sm text-gray-500">En revisión - 10/11/2025</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button class="text-[#5936FF] font-medium text-sm download-btn">Descargar</button>
+                        <button class="text-[#B8FF6C] font-medium text-sm summarize-btn">Resumir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- App Asistente Screen -->
+            <div id="appAsistenteScreen" class="app-screen h-full overflow-y-auto p-6">
+              <div class="h-full flex flex-col">
+                <div class="pb-4">
+                  <h2 class="text-2xl font-bold text-[#0A0F3C]">Asistente AI</h2>
+                </div>
+
+                <div id="appChatContainer" class="flex-grow overflow-y-auto space-y-4 mb-24">
+                  <div class="bg-gray-100 rounded-xl p-4 max-w-[80%]">
+                    <p class="text-gray-700">¡Hola! Soy tu asistente AI. Puedo ayudarte con estrategias de contenido, análisis de métricas y automatización de campañas.</p>
+                    <p class="text-xs text-gray-500 mt-2">Hace 1 minuto</p>
+                  </div>
+                </div>
+
+                <div class="mt-auto">
+                  <div class="flex gap-2">
+                    <input type="text" id="appChatInput" placeholder="Escribe tu consulta..." class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:border-[#5936FF] focus:ring-2 focus:ring-[#5936FF]/20 outline-none">
+                    <button id="appSendChatBtn" class="bg-[#B8FF6C] text-[#0A0F3C] p-3 rounded-lg">
+                      <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- App Cuenta Screen -->
+            <div id="appCuentaScreen" class="app-screen h-full overflow-y-auto p-6">
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-[#0A0F3C]">Mi Cuenta</h2>
+                <div class="bg-gradient-to-br from-[#0A0F3C] to-[#5936FF] rounded-2xl p-5 text-white">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                      <span id="appProfileInitial" class="text-xl font-bold">U</span>
+                    </div>
+                    <div>
+                      <h3 id="appProfileUsername" class="text-lg font-bold">Usuario</h3>
+                      <p id="appProfileEmail" class="text-sm text-gray-300">-</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-4">
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 bg-[#B8FF6C] rounded-lg flex items-center justify-center">
+                      <i data-lucide="layers" class="w-5 h-5 text-[#0A0F3C]"></i>
+                    </div>
+                    <div>
+                      <p class="font-semibold text-[#0A0F3C]">Plan Actual</p>
+                      <p class="text-gray-600 text-sm" id="appProfilePlan">Básico</p>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-3 border-t border-gray-100">
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div class="bg-gradient-to-r from-[#B8FF6C] to-[#7eff00] h-2 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">45% del plan utilizado</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+                    <i data-lucide="calendar" class="w-6 h-6 text-[#5936FF] mx-auto mb-2"></i>
+                    <p class="text-xs text-gray-500">Membresía</p>
+                    <p class="font-semibold text-[#0A0F3C] text-sm">Activa</p>
+                  </div>
+                  <div class="bg-white border border-gray-200 rounded-xl p-4 text-center">
+                    <i data-lucide="clock" class="w-6 h-6 text-[#B8FF6C] mx-auto mb-2"></i>
+                    <p class="text-xs text-gray-500">Próximo pago</p>
+                    <p class="font-semibold text-[#0A0F3C] text-sm">15/12/2024</p>
+                  </div>
+                </div>
+                <button id="logoutAppModalButton" class="w-full py-3 bg-gradient-to-r from-[#5936FF] to-[#7c5aff] text-white rounded-xl font-semibold hover:shadow-lg transition-all">
+                  Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <div class="border-t border-gray-200 bg-white">
+            <div class="grid grid-cols-5">
+              <button class="nav-btn active py-3 flex flex-col items-center gap-1 transition-all text-[#5936FF]" data-screen="appInicioScreen">
+                <i data-lucide="home" class="w-6 h-6"></i>
+                <span class="text-xs font-medium">Inicio</span>
+              </button>
+              <button class="nav-btn py-3 flex flex-col items-center gap-1 transition-all text-gray-400 hover:text-gray-600" data-screen="appTareasScreen">
+                <i data-lucide="check-square" class="w-6 h-6"></i>
+                <span class="text-xs font-medium">Tareas</span>
+              </button>
+              <button class="nav-btn py-3 flex flex-col items-center gap-1 transition-all text-gray-400 hover:text-gray-600" data-screen="appEntregasScreen">
+                <i data-lucide="inbox" class="w-6 h-6"></i>
+                <span class="text-xs font-medium">Entregas</span>
+              </button>
+              <button class="nav-btn py-3 flex flex-col items-center gap-1 transition-all text-gray-400 hover:text-gray-600" data-screen="appAsistenteScreen">
+                <i data-lucide="message-square" class="w-6 h-6"></i>
+                <span class="text-xs font-medium">Asistente</span>
+              </button>
+              <button class="nav-btn py-3 flex flex-col items-center gap-1 transition-all text-gray-400 hover:text-gray-600" data-screen="appCuentaScreen">
+                <i data-lucide="user" class="w-6 h-6"></i>
+                <span class="text-xs font-medium">Cuenta</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -946,6 +1287,20 @@
       const contactForm = document.getElementById('contactForm');
       const exploreServicesBtn = document.getElementById('exploreServicesBtn');
       const openAppBtn = document.getElementById('openAppBtn');
+      const mobileAppModal = document.getElementById('mobileAppModal');
+      const closeAppModal = document.getElementById('closeAppModal');
+      const appWelcomeName = document.getElementById('appWelcomeName');
+      const appProfileUsername = document.getElementById('appProfileUsername');
+      const appProfileEmail = document.getElementById('appProfileEmail');
+      const appProfileInitial = document.getElementById('appProfileInitial');
+      const appProfilePlan = document.getElementById('appProfilePlan');
+      const logoutAppModalButton = document.getElementById('logoutAppModalButton');
+      const navButtons = document.querySelectorAll('.nav-btn');
+      const appScreens = document.querySelectorAll('.app-screen');
+      const appChatContainer = document.getElementById('appChatContainer');
+      const appChatInput = document.getElementById('appChatInput');
+      const appSendChatBtn = document.getElementById('appSendChatBtn');
+      const suggestTasksBtn = document.getElementById('suggestTasksBtn');
       const reviewForm = document.getElementById('reviewForm');
       const starButtons = document.querySelectorAll('.star-btn');
       const ratingInput = document.getElementById('reviewRating');
@@ -987,7 +1342,120 @@
         // Update review form access based on session status
         updateReviewFormAccess();
       }
-      
+
+      // Show mobile app modal
+      function showMobileAppModal() {
+        if (currentUser) {
+          // Update user data in the app modal
+          updateAppModalUserData();
+
+          // Show the modal
+          mobileAppModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+
+          // Set the initial screen to 'Inicio'
+          showAppScreen('appInicioScreen');
+        }
+      }
+
+      // Hide mobile app modal
+      function hideMobileAppModal() {
+        mobileAppModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Update user data in the app modal
+      function updateAppModalUserData() {
+        if (currentUser) {
+          appWelcomeName.textContent = currentUser.name;
+          appProfileUsername.textContent = currentUser.name;
+          appProfileEmail.textContent = currentUser.email;
+          appProfileInitial.textContent = currentUser.name.charAt(0).toUpperCase();
+          // Assuming basic plan by default
+          appProfilePlan.textContent = 'Básico';
+        }
+      }
+
+      // Show specific app screen
+      function showAppScreen(screenId) {
+        // Hide all screens
+        appScreens.forEach(screen => {
+          screen.style.display = 'none';
+          screen.classList.remove('active');
+        });
+
+        // Show selected screen
+        const selectedScreen = document.getElementById(screenId);
+        if (selectedScreen) {
+          selectedScreen.style.display = 'block';
+          selectedScreen.classList.add('active');
+        }
+
+        // Update active nav button
+        navButtons.forEach(button => {
+          // Reset to inactive state
+          button.classList.remove('active', 'text-[#5936FF]');
+          button.classList.add('text-gray-400');
+
+          if (button.dataset.screen === screenId) {
+            // Set active state
+            button.classList.add('active', 'text-[#5936FF]');
+          }
+        });
+      }
+
+      // Add chat message to app
+      function addAppChatMessage(message, isUser = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = isUser
+          ? 'bg-[#5936FF] text-white rounded-xl p-4 max-w-[80%] ml-auto'
+          : 'bg-gray-100 rounded-xl p-4 max-w-[80%]';
+
+        messageDiv.innerHTML = `
+          <p class="text-gray-700">${message}</p>
+          <p class="text-xs text-gray-500 mt-2">Ahora mismo</p>
+        `;
+
+        if (isUser) {
+          messageDiv.querySelector('p').className = 'text-white';
+          messageDiv.querySelector('p.text-gray-500').className = 'text-xs text-[#B8FF6C]';
+        }
+
+        appChatContainer.appendChild(messageDiv);
+        appChatContainer.scrollTop = appChatContainer.scrollHeight;
+      }
+
+      // Simulate AI response in app
+      function simulateAppAIResponse(userMessage) {
+        // Show typing indicator
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'bg-gray-100 rounded-xl p-4 max-w-[80%]';
+        typingDiv.innerHTML = '<div class="flex space-x-2"><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div></div>';
+        appChatContainer.appendChild(typingDiv);
+        appChatContainer.scrollTop = appChatContainer.scrollHeight;
+
+        // Simulate AI thinking time
+        setTimeout(() => {
+          // Remove typing indicator
+          typingDiv.remove();
+
+          // Generate response based on user message
+          let response = "Gracias por tu mensaje. Soy tu asistente AI y estoy aquí para ayudarte con estrategias de contenido, análisis de métricas y automatización de campañas.";
+
+          if (userMessage.toLowerCase().includes('hola') || userMessage.toLowerCase().includes('buen')) {
+            response = "¡Hola! ¿En qué puedo ayudarte hoy? Puedo sugerir estrategias de contenido, revisar métricas o ayudarte con la automatización de campañas.";
+          } else if (userMessage.toLowerCase().includes('estrategia') || userMessage.toLowerCase().includes('contenido')) {
+            response = "Para una estrategia de contenido efectiva, te recomiendo definir claramente tu público objetivo, crear un calendario editorial y utilizar herramientas de automatización para mantener la consistencia.";
+          } else if (userMessage.toLowerCase().includes('métricas') || userMessage.toLowerCase().includes('datos')) {
+            response = "Las métricas clave para evaluar el éxito de tu campaña incluyen alcance, engagement, tasa de conversión y retorno de inversión (ROI). ¿Te gustaría que te muestre un reporte detallado?";
+          } else if (userMessage.toLowerCase().includes('automatización') || userMessage.toLowerCase().includes('publicidad')) {
+            response = "La automatización de campañas te permite optimizar el desempeño en tiempo real, ahorrar tiempo en tareas repetitivas y mejorar tu retorno de inversión. ¿Te gustaría saber cómo implementarla?";
+          }
+
+          addAppChatMessage(response, false);
+        }, 1500);
+      }
+
       // Show login modal
       function showLoginModal() {
         loginModal.classList.add('active');
@@ -1783,7 +2251,7 @@
         scrollToSection('#services');
       });
       
-      // Open app button - opens mobile app in a new page
+      // Open app button - opens mobile app in modal
       openAppBtn.addEventListener('click', (e) => {
         e.preventDefault();
         // Check if user is logged in
@@ -1792,7 +2260,9 @@
           mostrarAlertaConOpciones('Para acceder a la aplicación, primero inicia sesión o crea una cuenta.', 'Sesión requerida');
           return;
         }
-        window.location.href = 'app-movil/index.html';
+
+        // Show the mobile app modal
+        showMobileAppModal();
       });
 
       // Logout button event listener
@@ -1818,6 +2288,129 @@
             handleDisabledReviewElements();
           }
         });
+      });
+
+      // Mobile app modal event listeners
+      closeAppModal.addEventListener('click', hideMobileAppModal);
+
+      // Close modal when clicking on overlay
+      mobileAppModal.addEventListener('click', function(e) {
+        if (e.target === mobileAppModal) {
+          hideMobileAppModal();
+        }
+      });
+
+      // Navigation buttons for app screens
+      navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const screenId = button.dataset.screen;
+          showAppScreen(screenId);
+        });
+      });
+
+      // Logout from app modal
+      logoutAppModalButton.addEventListener('click', () => {
+        logout();
+        hideMobileAppModal();
+      });
+
+      // Suggest tasks button
+      suggestTasksBtn?.addEventListener('click', () => {
+        const newTaskTitle = "Nueva tarea sugerida por IA";
+        const newTaskTime = "Justo ahora";
+
+        // Create new task element
+        const newTask = document.createElement('div');
+        newTask.className = 'bg-white border border-gray-200 rounded-xl p-4 animate-pulse';
+        newTask.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-semibold text-[#0A0F3C]">${newTaskTitle}</p>
+              <p class="text-sm text-gray-500">${newTaskTime}</p>
+            </div>
+            <button class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center task-checkbox">
+              <i data-lucide="check" class="w-4 h-4 text-transparent"></i>
+            </button>
+          </div>
+        `;
+
+        // Add to Pendiente section
+        const pendienteSection = document.querySelector('#appTareasScreen .space-y-3:nth-child(2)');
+        if (pendienteSection) {
+          pendienteSection.appendChild(newTask);
+          lucide.createIcons();
+        }
+      });
+
+      // Task checkbox functionality
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.task-checkbox')) {
+          const checkbox = e.target.closest('.task-checkbox');
+          const icon = checkbox.querySelector('i');
+          const taskItem = checkbox.closest('[class*="bg-"]');
+
+          if (icon.classList.contains('text-transparent')) {
+            // Mark as completed
+            icon.classList.remove('text-transparent');
+            icon.classList.add('text-white');
+            checkbox.classList.remove('border-gray-300');
+            checkbox.classList.add('bg-[#5936FF]', 'border-[#5936FF]');
+
+            taskItem.classList.remove('bg-white', 'bg-blue-50');
+            taskItem.classList.add('bg-green-50', 'border-green-200', 'opacity-70');
+
+            // Add line-through to text
+            const taskText = taskItem.querySelector('p.font-semibold');
+            if (taskText) {
+              taskText.classList.add('line-through');
+            }
+          } else {
+            // Mark as incomplete
+            icon.classList.add('text-transparent');
+            icon.classList.remove('text-white');
+            checkbox.classList.add('border-gray-300');
+            checkbox.classList.remove('bg-[#5936FF]', 'border-[#5936FF]');
+
+            taskItem.classList.remove('bg-green-50', 'border-green-200', 'opacity-70');
+            taskItem.classList.add('bg-white', 'border-gray-200');
+
+            // Remove line-through from text
+            const taskText = taskItem.querySelector('p.font-semibold');
+            if (taskText) {
+              taskText.classList.remove('line-through');
+            }
+          }
+        }
+      });
+
+      // Download buttons functionality
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('download-btn')) {
+          alert('Descargando archivo...');
+        }
+      });
+
+      // Summarize buttons functionality
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('summarize-btn')) {
+          alert('Generando resumen...');
+        }
+      });
+
+      // Chat functionality
+      appSendChatBtn?.addEventListener('click', () => {
+        const message = appChatInput.value.trim();
+        if (message) {
+          addAppChatMessage(message, true);
+          appChatInput.value = '';
+          simulateAppAIResponse(message);
+        }
+      });
+
+      appChatInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          appSendChatBtn.click();
+        }
       });
 
       // Initialize the app
