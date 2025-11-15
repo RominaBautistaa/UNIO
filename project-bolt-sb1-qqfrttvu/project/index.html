@@ -142,11 +142,82 @@
         .desktop-nav {
           display: none;
         }
-        
+
         .mobile-nav {
           display: block;
         }
       }
+
+      /* Welcome screen styles */
+      .welcome-screen-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0A0F3C 0%, #1a1555 50%, #5936FF 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+
+      .welcome-screen-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .welcome-screen-content {
+        text-align: center;
+        color: white;
+        max-width: 90%;
+        width: 100%;
+      }
+
+      .welcome-logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .welcome-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .welcome-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeOutDown {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+      }
+
     </style>
   </head>
   <body class="bg-white">
@@ -647,11 +718,11 @@
               <span class="text-sm text-gray-200">Powered by AI</span>
             </div>
 
-            <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 id="heroTitle" class="text-5xl lg:text-6xl font-bold leading-tight">
               Transforma tu marca con Inteligencia Artificial y Creatividad Real
             </h1>
 
-            <p class="text-xl text-gray-300">
+            <p id="heroSubtitle" class="text-xl text-gray-300">
               Descubre cómo ÜNIO impulsa el crecimiento digital de emprendedores y mypes con estrategias de marketing inteligente.
             </p>
 
@@ -1295,12 +1366,16 @@
       const appProfileInitial = document.getElementById('appProfileInitial');
       const appProfilePlan = document.getElementById('appProfilePlan');
       const logoutAppModalButton = document.getElementById('logoutAppModalButton');
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSubtitle = document.getElementById('heroSubtitle');
       const navButtons = document.querySelectorAll('.nav-btn');
       const appScreens = document.querySelectorAll('.app-screen');
       const appChatContainer = document.getElementById('appChatContainer');
       const appChatInput = document.getElementById('appChatInput');
       const appSendChatBtn = document.getElementById('appSendChatBtn');
       const suggestTasksBtn = document.getElementById('suggestTasksBtn');
+      const welcomeScreen = document.getElementById('welcomeScreen');
+      const welcomeUserName = document.getElementById('welcomeUserName');
       const reviewForm = document.getElementById('reviewForm');
       const starButtons = document.querySelectorAll('.star-btn');
       const ratingInput = document.getElementById('reviewRating');
@@ -1334,13 +1409,39 @@
         if (currentUser) {
           loginButtonNav.style.display = 'none';
           logoutButtonNav.style.display = 'block';
+
+          // Update hero text for authenticated users
+          if (currentUser.name) {
+            heroTitle.textContent = `Bienvenido/a, ${currentUser.name}`;
+            heroSubtitle.textContent = 'Nos alegra verte de vuelta.';
+          }
         } else {
           loginButtonNav.style.display = 'block';
           logoutButtonNav.style.display = 'none';
+
+          // Restore original hero text when not logged in
+          heroTitle.textContent = 'Transforma tu marca con Inteligencia Artificial y Creatividad Real';
+          heroSubtitle.textContent = 'Descubre cómo ÜNIO impulsa el crecimiento digital de emprendedores y mypes con estrategias de marketing inteligente.';
         }
 
         // Update review form access based on session status
         updateReviewFormAccess();
+      }
+
+      // Show welcome screen
+      function showWelcomeScreen() {
+        if (currentUser && currentUser.name) {
+          // Set the user's name in the welcome message
+          welcomeUserName.textContent = currentUser.name;
+
+          // Show the welcome screen
+          welcomeScreen.classList.add('active');
+
+          // After 1.5 seconds, fade out the welcome screen
+          setTimeout(() => {
+            welcomeScreen.classList.remove('active');
+          }, 1500);
+        }
       }
 
       // Show mobile app modal
@@ -1525,6 +1626,8 @@
             hideLoginModal();
             updateUIForUser();
             showNotification('Inicio de sesión exitoso');
+            // Show welcome screen after successful login
+            showWelcomeScreen();
           } else {
             showNotification('Email o contraseña incorrectos.', 'error');
           }
@@ -2415,11 +2518,24 @@
 
       // Initialize the app
       loadUser();
-      
+
       // Initialize Lucide icons again after DOM is fully loaded
       document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
       });
     </script>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen-overlay">
+      <div class="welcome-screen-content">
+        <div class="welcome-logo-container">
+          <div class="w-16 h-16 bg-gradient-to-br from-[#5936FF] to-[#7eff00] rounded-xl flex items-center justify-center mb-6">
+            <span class="text-white font-bold text-2xl">Ü</span>
+          </div>
+        </div>
+        <h1 class="welcome-title">¡Bienvenido/a, <span id="welcomeUserName">Usuario</span>!</h1>
+        <p class="welcome-subtitle">Nos alegra verte de vuelta.</p>
+      </div>
+    </div>
   </body>
 </html>
