@@ -18,8 +18,7 @@
   ],
   "author": "UNIO Development Team",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {
-    "serve": "^14.2.3"
+  "devDependencies": {
+    "serve": "^14.2.5"
   }
 }
